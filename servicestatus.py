@@ -7,7 +7,7 @@ from mailer import Message
 try:
     urllib2.urlopen('http://www.biller.in/biller')
 except urllib2.HTTPError, e:
-    message = Message(From="jovin@coolmindsinc.com",
+    message = Message(From="jovin@localhost.com",
                   To="jovin.25@gmail.com")
     message.Subject = "Biller seems to be down!"
     message.Html = """<p>Hi!<br>
@@ -30,13 +30,13 @@ try:
     db = MySQLdb.connect(host="localhost", # your host, usually localhost
                      user="root", # your username
                       passwd="root", # your password
-                      db="biller_test") # name of the data base
+                      db="test") # name of the data base
     cursor = db.cursor()
     cursor.execute("SELECT VERSION()")
     results = cursor.fetchone()
     ver = results[0]
 except MySQLdb.Error, e:
-    message = Message(From="jovin@coolmindsinc.com",
+    message = Message(From="jovin@localhost.com",
                   To="jovin.25@gmail.com")
     message.Subject = "Biller Mysql seems to be down!"
     message.Html = """<p>Hi!<br>
